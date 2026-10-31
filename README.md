@@ -12,11 +12,13 @@ curl -X GET http://localhost:8000
 
 
 docker build -t agt-ava .
-docker run --rm -d --env-file=.env -p 8777:8000 --name agt-ava agt-ava
+### teste
+docker run --rm -d --env-file=.env -p 8002:8000 --name agt-ava agt-ava
+### produção
+docker run -d --env-file=.env -p 8002:8000 --restart always --name agt-ava agt-ava
 
-
-curl -X GET http://localhost:8777
-curl -X POST http://localhost:8777/avaliar \
+curl -X GET http://localhost:8002
+curl -X POST http://localhost:8002/avaliar \
   -H "Content-Type: application/json" \
   -d '{"review": "Este produto é incrível! Adorei a qualidade e recomendo a todos."}'
 
